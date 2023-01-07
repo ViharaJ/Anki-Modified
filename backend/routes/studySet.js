@@ -1,11 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const Card = require('../models/cardModel') 
+const sSetController = require('../controllers/studySetController')
+
 
 // Show all study sets
-router.get('/', (req, res) => {
-    res.json({mssg:'Welcome to the router'})
-})
+router.get('/', sSetController.getAllCards)
 
 // show cards under one set
 router.get('/:subject', (req, res) => {
@@ -18,15 +17,7 @@ router.get('/:subject/test', (req,res) => {
 })
 
 // adding a card
-router.post('/:subject', async (req,res) => {
-    const {question,answer} = req.body
-    try {
-        const newCard = await Card.create({question,answer})
-        res.status(200).json(newCard)
-    } catch (e) {
-        res.status(400).json({error: e.message})
-    }
-})
+router.post('/:subject', sSetController.addCard)
 
 // delete a card
 router.delete('/:subject', (req,res) => {
