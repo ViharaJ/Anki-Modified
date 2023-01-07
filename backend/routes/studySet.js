@@ -3,29 +3,39 @@ const router = express.Router()
 const sSetController = require('../controllers/studySetController')
 
 
-// Show all study sets
+// Show all subjects
 router.get('/', sSetController.getAllCards)
 
-// show cards under one set
+// show decks under one subject
 router.get('/:subject', (req, res) => {
     res.json({mssg:'looking at subject'})
 })
 
+// show cards in a deck
+router.get('/:subject/:deck', (req, res) => {
+    res.json({mssg:'looking at subject'})
+})
+
 // test self
-router.get('/:subject/test', (req,res) => {
+router.get('/:subject/:deck/test', (req,res) => {
     res.json({mssg:'testing subject'})
 })
 
+// add a subject
+router.post('/', (req, res) => {
+    res.json({mssg:'creating a subject'})
+})
+
 // adding a card
-router.post('/:subject', sSetController.addCard)
+router.post('/:subject/:deck', sSetController.addCard)
 
 // delete a card
-router.delete('/:subject', (req,res) => {
+router.delete('/:subject/:deck', (req,res) => {
     res.json({mssg:'deleted a card'})
 })
 
 // edit a card
-router.patch('/:subject', (req,res) => {
+router.patch('/:subject/:deck', (req,res) => {
     res.json({mssg:'modified a card'})
 })
 

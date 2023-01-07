@@ -10,6 +10,14 @@ const CardSchema = new Schema({
     answer: {
         type: String,
         required: true
+    },
+    correctAns: {
+        type: Number, 
+        default: 0
+    },
+    totalTries:{
+        type: Number, 
+        default: 0
     }
 },{})
 
