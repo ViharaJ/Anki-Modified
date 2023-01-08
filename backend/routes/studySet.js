@@ -10,8 +10,8 @@ router.get('/', sSetController.getAllCards)
 // show decks under one subject
 router.get('/:subject', subjectControl.getAllDecks)
 
-// show cards in a deck
-router.get('/:subject/:deck', sSetController.getAllCards)
+// show cards in a deck --- need to finish implementation
+router.get('/:subject/:deck', subjectControl.getDeck)
 
 // test self
 router.get('/:subject/:deck/test', (req,res) => {

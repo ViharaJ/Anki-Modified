@@ -19,5 +19,7 @@ const addCard = async (req, res) => {
     }
 }
 
+// delete a card
+
 module.exports = {addCard,
                 getAllCards}
