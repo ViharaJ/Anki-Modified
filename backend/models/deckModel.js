@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const DeckSchema = new Schema({
-    deckName:{
+    name:{
         type: String, 
         required: true
     },
