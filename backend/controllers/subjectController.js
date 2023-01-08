@@ -1,7 +1,7 @@
 const subjectModel = require('../models/subjectModel')
 const deckModel = require('../models/deckModel')
 
-//show all decks under
+//show all decks under this subject
 const getAllDecks = async(req, res) => {
     console.log(req.params)
     const decks = await deckModel.find({})
@@ -11,15 +11,19 @@ const getAllDecks = async(req, res) => {
 //get a single deck
 const getDeck = async (req, res) => {
     const{s, d} = req.params
+    console.log(req.params)
     const deck = await deckModel.find({d})
     // get cards now
     res.status(200).json(deck)
+    //error if no cards
 }
+
 //create a subject
 const createSubject = async (req, res) => {
-    const {subjectName,decks} = req.body
+    const {name, decks} = req.body
+
     try {
-        const newSubject = await subjectModel.create({subjectName,decks})
+        const newSubject = await subjectModel.create({name,decks})
         res.status(200).json(newSubject)
     } catch (e) {
         res.status(400).json({error: e.message})
@@ -28,9 +32,13 @@ const createSubject = async (req, res) => {
 
  // create a deck 
 const createDeck = async(req, res) => {
+    const {subject} = req.params
+    let subjectId = await subjectModel.find({name: subject}, '_id')
+    subjectId = subjectId[0]._id
+    
     const {name, cards} = req.body
     try {
-        const newSubject = await deckModel.create({name, cards})
+        const newSubject = await deckModel.create({name, cards, subjectId})
         res.status(200).json(newSubject)
     } catch (e) {
         res.status(400).json({error: e.message})

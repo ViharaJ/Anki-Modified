@@ -2,9 +2,10 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
-const DeckSchema = new Schema({
-    subjectName:{
-        type: String, 
+const subjectSchema = new Schema({
+    name:{
+        type: String,
+        unique: true, 
         required: true
     },
     decks: [{
@@ -13,4 +14,4 @@ const DeckSchema = new Schema({
     }]
 },{})
 
-module.exports = mongoose.model('Subject', DeckSchema)
+module.exports = mongoose.model('Subject', subjectSchema)
