@@ -2,6 +2,10 @@ const subjectModel = require('../models/subjectModel')
 const deckModel = require('../models/deckModel')
 
 //show all decks under
+const getAllDecks = async(req, res) => {
+    const decks = await deckModel.find({})
+    res.status(200).json(decks)
+}
 
 //create a subject
 const createSubject = async (req, res) => {
@@ -26,4 +30,4 @@ const createDeck = async(req, res) => {
 }
 
 
-module.exports = {createSubject, createDeck}
+module.exports = {createSubject, createDeck, getAllDecks}

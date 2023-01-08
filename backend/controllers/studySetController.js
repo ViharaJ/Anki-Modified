@@ -4,7 +4,6 @@ const cardModel = require('../models/cardModel')
 // Show all cards
 const getAllCards = async(req, res) => {
     const cards = await cardModel.find({})
-
     res.status(200).json(cards)
 }
 
