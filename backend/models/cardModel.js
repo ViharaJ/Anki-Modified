@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
+// cards are nested in decks, decks are nested in subjects
 const CardSchema = new Schema({
     question: {
         type: String,
