@@ -15,7 +15,13 @@ const DeckSchema = new Schema({
     subjectId: {
         type: Schema.Types.ObjectId, 
         required:true
-    }
+    }, 
+    scores: [{
+        type: Number
+    }], 
+    attemptTimes: [{
+        type: Number
+    }]
 },{})
 
 module.exports = mongoose.model('Deck', DeckSchema)

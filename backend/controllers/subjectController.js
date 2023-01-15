@@ -3,7 +3,6 @@ const deckModel = require('../models/deckModel')
 
 //show all decks under this subject
 const getAllDecks = async(req, res) => {
-    console.log(req.params)
     const decks = await deckModel.find({})
     res.status(200).json(decks)
 }
